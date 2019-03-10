@@ -8,7 +8,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && wget https://github.com/pymumu/smartdns/releases/download/Release21/smartdns.1.2019.03.02-1141.x86_64.tar.gz \
   && tar zxvf smartdns.1.2019.03.02-1141.x86_64.tar.gz \
-  && cp smartdns/src/smartdns /start \
+  && cp smartdns/src/smartdns /bin/smartdns \
   && rm -rf smartdns* \
   && apt-get -y --purge remove wget
 
