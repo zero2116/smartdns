@@ -1,17 +1,12 @@
-FROM ubuntu:bionic
+FROM alpine:3.8
 
 LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
 
-RUN apt-get update \
-  && apt-get install -y libssl1.0.0 \
-  && apt-get install -y wget \
-  && rm -rf /var/lib/apt/lists/* \
+RUN apk add --no-cache openssl libc6-compat \
   && wget https://github.com/pymumu/smartdns/releases/download/Release24/smartdns.1.2019.04.25-2140.x86_64.tar.gz \
   && tar zxvf smartdns.*.x86_64.tar.gz \
   && cp smartdns/src/smartdns /bin/smartdns \
-  && rm -rf smartdns* \
-  && apt-get -y --purge remove wget \
-  && apt-get clean
+  && rm -rf smartdns* 
 
 ADD start.sh /start.sh
 ADD config.conf /config.conf
