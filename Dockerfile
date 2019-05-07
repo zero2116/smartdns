@@ -5,7 +5,7 @@ LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
 RUN apk add --no-cache openssl libc6-compat \
   && wget https://github.com/pymumu/smartdns/releases/download/Release24/smartdns.1.2019.04.25-2140.x86_64.tar.gz \
   && tar zxvf smartdns.*.x86_64.tar.gz \
-  && cp smartdns/src/smartdns /bin/smartdns \
+  && mv smartdns/src/smartdns /bin/smartdns \
   && rm -rf smartdns* 
 
 ADD start.sh /start.sh
