@@ -3,7 +3,7 @@
 ```
 docker pull ghostry/smartdns
 docker container stop gsmartdns ; docker container rm gsmartdns
-docker run -d -p 53:53/udp --restart=always --name gsmartdns -v ~/.smartdns:/smartdns ghostry/smartdns
+docker run -d -p 53:53/udp --restart=always --name gsmartdns -v ~/.gsmartdns:/smartdns ghostry/smartdns
 docker restart gsmartdns
 ```
 
