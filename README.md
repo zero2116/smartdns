@@ -4,6 +4,7 @@
 docker pull ghostry/smartdns
 docker container stop gsmartdns ; docker container rm gsmartdns
 docker run -d -p 53:53/udp --restart=always --name gsmartdns -v ~/.smartdns:/smartdns ghostry/smartdns
+docker restart gsmartdns
 ```
 
 tcp可以按需映射,一般都是用udp,增加tcp使用`-p 53:53`
