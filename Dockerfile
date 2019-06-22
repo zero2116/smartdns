@@ -1,12 +1,11 @@
-FROM alpine:3.8
+FROM alpine
 
 LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
 
-RUN apk add --no-cache openssl libc6-compat \
-  && wget https://github.com/pymumu/smartdns/releases/download/Release25/smartdns.1.2019.05.21-2250.x86_64.tar.gz \
-  && tar zxvf smartdns.*.x86_64.tar.gz \
+RUN wget https://github.com/pymumu/smartdns/releases/download/Release26-Special/smartdns.1.2019.06.21-2337.x86_64-all.tar.gz \
+  && tar zxvf smartdns.*.tar.gz \
   && mv smartdns/src/smartdns /bin/smartdns \
-  && rm -rf smartdns* 
+  && rm -rf smartdns*
 
 ADD start.sh /start.sh
 ADD config.conf /config.conf
