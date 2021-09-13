@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
 
-RUN wget https://github.com/pymumu/smartdns/releases/download/Release34/smartdns.11.2021.08.07-1628.x86_64-linux-all.tar.gz \
+RUN wget https://github.com/pymumu/smartdns/releases/download/Release35/smartdns.1.2021.08.27-1923.x86_64-linux-all.tar.gz \
   && tar zxvf smartdns.*.tar.gz \
   && mv smartdns/usr/sbin/smartdns /bin/smartdns \
   && chmod +x /bin/smartdns \
