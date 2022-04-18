@@ -2,7 +2,10 @@ FROM alpine
 
 LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
 
-RUN wget https://github.com/pymumu/smartdns/releases/download/Release36.1/smartdns.1.2022.04.05-2046.x86_64-linux-all.tar.gz \
+RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
+  && export OS="linux" \
+  && apk --no-cache --update add curl \
+  && wget --tries=3 $(curl -s $URL | grep browser_download_url | egrep -o 'http.+\.\w+' | grep -i "$(uname -m)" | grep -m 1 -i "$(echo $OS)") \
   && tar zxvf smartdns.*.tar.gz \
   && mv smartdns/usr/sbin/smartdns /bin/smartdns \
   && chmod +x /bin/smartdns \
