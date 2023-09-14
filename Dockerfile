@@ -1,6 +1,5 @@
+# Download
 FROM alpine AS builder
-
-LABEL maintainer="Ghostry <ghostry.green@gmail.com>"
 
 RUN export URL=https://api.github.com/repos/pymumu/smartdns/releases/latest \
   && export OS="linux" \
@@ -14,13 +13,12 @@ FROM alpine
 COPY --from=builder /smartdns/usr/sbin/smartdns /bin/smartdns
 RUN chmod +x /bin/smartdns
 
-ADD start.sh /start.sh
-ADD config.conf /config.conf
-
-WORKDIR /
+WORKDIR /smartdns
+ADD config.conf smartdns.conf
 
 VOLUME ["/smartdns"]
 
-EXPOSE 53
+EXPOSE 5353
+EXPOSE 6363
 
-CMD ["/start.sh"]
+ENTRYPOINT ["/bin/smartdns","-f","-x","-c","/smartdns/smartdns.conf"]
