@@ -1,13 +1,11 @@
 # docker-smartdns
 **使用**
 ```
-docker pull ghostry/smartdns
-docker container stop gsmartdns ; docker container rm gsmartdns
-docker run -d -p 53:53/udp --restart=always --name gsmartdns -v ~/.gsmartdns:/smartdns ghostry/smartdns
-docker restart gsmartdns
+docker pull zero2116/smartdns
+docker run -d -p 5353:5353/udp -p 6363:6363/udp --restart=always --name smartdns zero2116/smartdns
 ```
 
-tcp可以按需映射,一般都是用udp,增加tcp使用`-p 53:53`
+默认两个DNS服务，5353用来解析国内，6363用来解析国外
 
 **介绍**
 
