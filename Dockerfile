@@ -16,8 +16,6 @@ RUN chmod +x /bin/smartdns
 WORKDIR /smartdns
 ADD config.conf smartdns.conf
 
-VOLUME ["/smartdns"]
-
 EXPOSE 5353
 EXPOSE 6363
 
