@@ -16,7 +16,7 @@ RUN chmod +x /bin/smartdns
 WORKDIR /smartdns
 ADD config.conf smartdns.conf
 
-EXPOSE 5353
-EXPOSE 6363
+EXPOSE 5353/udp
+EXPOSE 6363/udp
 
 ENTRYPOINT ["/bin/smartdns","-f","-x","-c","/smartdns/smartdns.conf"]
